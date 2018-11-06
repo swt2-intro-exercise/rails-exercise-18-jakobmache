@@ -9,6 +9,13 @@ RSpec.describe Author, type: :model do
       expect(author.last_name).to eq('Turing')
       expect(author.homepage).to eq('https://wikipedia.org/Alan_Turing')
     end
+
+    context 'when last name is missing' do
+      it 'fails the validation' do
+        author = Author.new first_name: 'Peter', homepage: 'abc'
+        expect(author).to_not be_valid
+      end
+    end
   end
 
   describe :name do
