@@ -25,6 +25,6 @@ describe "Index author page", type: :feature do
 
     visit authors_path
 
-    expect(page).to have_link 'Delete', href: author_path(@alan)
+    expect(page).to have_link 'Destroy', href: author_path(@alan)
   end
 end
