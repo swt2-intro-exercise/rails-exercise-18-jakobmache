@@ -2,9 +2,11 @@ require 'rails_helper'
 
 describe "Index author page", type: :feature do
 
-  it "should render withour error" do
+  before do
     @alan = FactoryBot.create :author
+  end
 
+  it "should render withour error" do
     visit authors_path
 
     expect(page).to have_link 'New', href: new_author_path
@@ -13,18 +15,20 @@ describe "Index author page", type: :feature do
   end
 
   it 'should show a link to the author edit page' do
-    @alan = FactoryBot.create :author
-
     visit authors_path
 
     expect(page).to have_link 'Edit', href: edit_author_path(@alan)
   end
 
   it 'should show a delete link for each author' do
-    @alan = FactoryBot.create :author
-
     visit authors_path
 
     expect(page).to have_link 'Destroy', href: author_path(@alan)
+  end
+
+  it 'should not show an error when clicking the delete link' do
+    visit authors_path
+    click_on 'Destroy'
+
   end
 end
