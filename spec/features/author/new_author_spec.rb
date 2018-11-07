@@ -31,6 +31,6 @@ describe "New author page", type: :feature do
     page.fill_in 'author[homepage]', with: 'test'
     find('input[type="submit"]').click
 
-    expect(page).to have_text('Errors')
+    expect(page).to have_text('error')
   end
 end
