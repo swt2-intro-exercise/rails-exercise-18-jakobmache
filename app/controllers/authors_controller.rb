@@ -20,6 +20,13 @@ class AuthorsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def destroy
+    @author = Author.find(params[:id])
+    @author.destroy
+
+    redirect_to authors_path
+  end
 
   def create
     @author = Author.new(author_params)
