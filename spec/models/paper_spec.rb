@@ -25,5 +25,13 @@ RSpec.describe Paper, type: :model do
         expect(paper).to_not be_valid
       end
     end
+
+    context 'when year is not a number' do
+      let(:paper) { Paper.new title: 'Test', venue: 'Test', year: '2010' }
+
+      it 'fails the validation' do
+        expect(paper).to_not be_valid
+      end
+    end
   end
 end
