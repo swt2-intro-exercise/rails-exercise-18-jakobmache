@@ -34,4 +34,9 @@ RSpec.describe Paper, type: :model do
       end
     end
   end
+
+  it 'should have an author list' do
+    paper = FactoryBot.create :paper
+    expect(paper.authors).to_not be_nil
+  end
 end
